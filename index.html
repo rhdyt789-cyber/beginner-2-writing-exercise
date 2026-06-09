@@ -1,353 +1,243 @@
-```html
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Listening Exercise - Finding the Library</title>
+<title>Job Application Email Writing Activity</title>
 
 <style>
-
 body{
     font-family: Arial, sans-serif;
-    max-width:1000px;
-    margin:auto;
+    background:#f4f7fb;
+    margin:0;
     padding:20px;
-    background:#f5f7fb;
 }
 
-h1{
-    text-align:center;
+.container{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1,h2{
     color:#2c3e50;
 }
 
-.card{
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    margin-top:20px;
-    box-shadow:0 3px 10px rgba(0,0,0,.1);
+.section{
+    margin-bottom:30px;
 }
 
-.word-bank{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:25px;
-}
-
-.word{
-    background:#4361ee;
-    color:white;
-    padding:10px 15px;
-    border-radius:8px;
-    cursor:grab;
-    font-weight:bold;
+.job-box{
+    background:#eef5ff;
+    border-left:5px solid #3498db;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:5px;
 }
 
 .question{
-    margin:20px 0;
-    font-size:18px;
-    line-height:1.8;
+    margin:15px 0;
 }
 
-.dropzone{
-    display:inline-block;
-    min-width:120px;
-    min-height:35px;
-    border:2px dashed #4361ee;
-    border-radius:8px;
-    text-align:center;
-    background:white;
-    vertical-align:middle;
-}
-
-.correct{
-    background:#06d6a0 !important;
-    color:white;
-    border-color:#06d6a0 !important;
-}
-
-.wrong{
-    background:#ef233c !important;
-    color:white;
-    border-color:#ef233c !important;
-}
-
-.feedback{
-    color:#ef233c;
-    font-size:14px;
+input[type=text]{
+    width:100%;
+    padding:10px;
     margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
 }
 
 button{
-    background:#4361ee;
+    background:#3498db;
     color:white;
     border:none;
-    padding:12px 25px;
-    border-radius:8px;
-    font-size:18px;
+    padding:12px 20px;
+    border-radius:5px;
     cursor:pointer;
+    margin-top:15px;
 }
 
 button:hover{
-    opacity:.9;
+    background:#2980b9;
 }
 
-#result{
-    margin-top:25px;
-    font-size:24px;
+.score{
+    font-size:20px;
     font-weight:bold;
-    text-align:center;
+    margin-top:15px;
 }
 
-.tf-feedback{
-    margin-left:10px;
-    font-weight:bold;
+.email-box{
+    background:#fafafa;
+    padding:20px;
+    border:1px solid #ddd;
+    border-radius:8px;
 }
 
+.checklist{
+    background:#f8f9fa;
+    padding:15px;
+    border-radius:8px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+}
 </style>
 </head>
 <body>
 
-<h1>🎧 Finding the Library</h1>
+<div class="container">
 
-<audio controls style="width:100%;">
-<source src="0L4-finding-the-library.mp3" type="audio/mpeg">
-</audio>
+<h1>Job Application Email Writing Activity</h1>
 
-<div class="card">
+<div class="section">
+<h2>Part A: Reading Comprehension</h2>
 
-<h2>Part 1: Drag the Words</h2>
-
-<div class="word-bank">
-
-<div class="word" draggable="true" id="library">library</div>
-<div class="word" draggable="true" id="bridge">bridge</div>
-<div class="word" draggable="true" id="supermarket">supermarket</div>
-<div class="word" draggable="true" id="right">right</div>
-<div class="word" draggable="true" id="park">park</div>
-<div class="word" draggable="true" id="red">red</div>
-
+<div class="question">
+1. What job does Lenny want information about?
+<input type="text" id="q1">
 </div>
 
 <div class="question">
-1. John is looking for the
-<span class="dropzone" data-answer="library"></span>
+2. Can Lenny cook?
+<input type="text" id="q2">
 </div>
 
 <div class="question">
-2. John needs to cross the river on a
-<span class="dropzone" data-answer="bridge"></span>
+3. Name one language Lenny speaks.
+<input type="text" id="q3">
 </div>
 
 <div class="question">
-3. John will see a big
-<span class="dropzone" data-answer="supermarket"></span>
-on his left.
+4. Can Lenny use a computer?
+<input type="text" id="q4">
 </div>
 
 <div class="question">
-4. He should turn
-<span class="dropzone" data-answer="right"></span>
-after the supermarket.
+5. Does Lenny enjoy working with people?
+<input type="text" id="q5">
 </div>
 
-<div class="question">
-5. The library is across from the
-<span class="dropzone" data-answer="park"></span>
+<button onclick="checkQuiz()">Check Answers</button>
+
+<div class="score" id="score"></div>
 </div>
 
-<div class="question">
-6. The library is a big building with a
-<span class="dropzone" data-answer="red"></span>
-roof.
-</div>
+<div class="section">
+<h2>Part B: Write Your Email</h2>
 
-</div>
+<div class="email-box">
 
-<div class="card">
+<p><strong>From:</strong></p>
+<input type="text" id="from">
 
-<h2>Part 2: True or False</h2>
+<p><strong>To:</strong></p>
+<input type="text" value="jobs@uoh.edu.uk-sports">
 
-<div class="question">
-1. John knows the town very well.
-<label><input type="radio" name="tf1" value="True"> True</label>
-<label><input type="radio" name="tf1" value="False"> False</label>
-<span id="fb1" class="tf-feedback"></span>
-</div>
+<p><strong>Subject:</strong></p>
+<input type="text" id="subject">
 
-<div class="question">
-2. John is visiting the town for only one day.
-<label><input type="radio" name="tf2" value="True"> True</label>
-<label><input type="radio" name="tf2" value="False"> False</label>
-<span id="fb2" class="tf-feedback"></span>
-</div>
-
-<div class="question">
-3. The library is very far away.
-<label><input type="radio" name="tf3" value="True"> True</label>
-<label><input type="radio" name="tf3" value="False"> False</label>
-<span id="fb3" class="tf-feedback"></span>
-</div>
-
-<div class="question">
-4. John must cross a river to get to the library.
-<label><input type="radio" name="tf4" value="True"> True</label>
-<label><input type="radio" name="tf4" value="False"> False</label>
-<span id="fb4" class="tf-feedback"></span>
-</div>
-
-<div class="question">
-5. John should turn left after the supermarket.
-<label><input type="radio" name="tf5" value="True"> True</label>
-<label><input type="radio" name="tf5" value="False"> False</label>
-<span id="fb5" class="tf-feedback"></span>
-</div>
-
-<div class="question">
-6. The library is next to the park.
-<label><input type="radio" name="tf6" value="True"> True</label>
-<label><input type="radio" name="tf6" value="False"> False</label>
-<span id="fb6" class="tf-feedback"></span>
-</div>
-
-<div class="question">
-7. The library has a red roof.
-<label><input type="radio" name="tf7" value="True"> True</label>
-<label><input type="radio" name="tf7" value="False"> False</label>
-<span id="fb7" class="tf-feedback"></span>
-</div>
+<p><strong>Email:</strong></p>
+<textarea id="emailText"
+placeholder="Write your email here..."></textarea>
 
 </div>
 
-<div style="text-align:center;margin-top:20px;">
-<button onclick="checkAnswers()">Check Answers</button>
-<button onclick="location.reload()">Try Again</button>
+<button onclick="checkWriting()">Check Writing Checklist</button>
+
+<div id="writingResult"></div>
 </div>
 
-<div id="result"></div>
+</div>
 
 <script>
 
-const draggables=document.querySelectorAll('.word');
-const dropzones=document.querySelectorAll('.dropzone');
+function checkQuiz(){
 
-draggables.forEach(item=>{
+let score = 0;
 
-item.addEventListener('dragstart',e=>{
-e.dataTransfer.setData('text',item.id);
-});
+const q1 = document.getElementById("q1").value.toLowerCase();
+const q2 = document.getElementById("q2").value.toLowerCase();
+const q3 = document.getElementById("q3").value.toLowerCase();
+const q4 = document.getElementById("q4").value.toLowerCase();
+const q5 = document.getElementById("q5").value.toLowerCase();
 
-});
+if(q1.includes("sports café") || q1.includes("cafe")) score++;
+if(q2.includes("yes")) score++;
+if(q3.includes("english") || q3.includes("spanish") || q3.includes("german")) score++;
+if(q4.includes("yes")) score++;
+if(q5.includes("yes")) score++;
 
-dropzones.forEach(zone=>{
+document.getElementById("score").innerHTML =
+"Reading Score: " + score + " / 5";
+}
 
-zone.addEventListener('dragover',e=>{
-e.preventDefault();
-});
+function checkWriting(){
 
-zone.addEventListener('drop',e=>{
+let checklist = 0;
 
-e.preventDefault();
+const from = document.getElementById("from").value;
+const subject = document.getElementById("subject").value;
+const email = document.getElementById("emailText").value.toLowerCase();
 
-const id=e.dataTransfer.getData('text');
+let feedback = "<h3>Writing Checklist</h3><ul>";
 
-zone.innerHTML=id;
-zone.dataset.user=id;
-
-});
-
-});
-
-function checkAnswers(){
-
-let score=0;
-
-// Fill blanks
-
-dropzones.forEach(zone=>{
-
-if(zone.dataset.user===zone.dataset.answer){
-
-zone.classList.add("correct");
-score++;
-
+if(from.length > 0){
+feedback += "<li>✅ From field completed</li>";
+checklist++;
 }else{
-
-zone.classList.add("wrong");
-
-zone.innerHTML=
-(zone.dataset.user || "blank")
-+"<br><small>✓ "
-+zone.dataset.answer+
-"</small>";
-
+feedback += "<li>❌ Add your email address</li>";
 }
 
-});
-
-// True False
-
-const answers={
-tf1:"False",
-tf2:"True",
-tf3:"False",
-tf4:"True",
-tf5:"False",
-tf6:"False",
-tf7:"True"
-};
-
-for(let key in answers){
-
-const selected=document.querySelector(
-`input[name="${key}"]:checked`
-);
-
-const feedback=document.getElementById(
-"fb"+key.replace("tf","")
-);
-
-if(selected){
-
-if(selected.value===answers[key]){
-
-feedback.innerHTML="✓";
-feedback.style.color="green";
-score++;
-
+if(subject.length > 0){
+feedback += "<li>✅ Subject included</li>";
+checklist++;
 }else{
-
-feedback.innerHTML=
-"Correct: "+answers[key];
-feedback.style.color="red";
-
+feedback += "<li>❌ Add a subject</li>";
 }
 
+if(email.includes("dear")){
+feedback += "<li>✅ Greeting included</li>";
+checklist++;
 }else{
-
-feedback.innerHTML=
-"Correct: "+answers[key];
-feedback.style.color="red";
-
+feedback += "<li>❌ Add a greeting (Dear...)</li>";
 }
 
+if(email.includes("best regards")){
+feedback += "<li>✅ Closing included</li>";
+checklist++;
+}else{
+feedback += "<li>❌ Add 'Best regards'</li>";
 }
 
-let percent=Math.round((score/13)*100);
+if(email.length > 80){
+feedback += "<li>✅ Email contains enough information</li>";
+checklist++;
+}else{
+feedback += "<li>❌ Write more details about your skills</li>";
+}
 
-document.getElementById("result").innerHTML=
-`
-Score: ${score}/13
-<br>
-Percentage: ${percent}%
-`;
+feedback += "</ul>";
 
+feedback += "<p><strong>Writing Score: "
++ checklist + " / 5</strong></p>";
+
+document.getElementById("writingResult").innerHTML = feedback;
 }
 
 </script>
 
 </body>
 </html>
-```
